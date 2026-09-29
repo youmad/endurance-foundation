@@ -13,14 +13,7 @@ by unvalidated strings, numbers, or mutable date-time objects.
 - explicit temporal resolution;
 - production and deterministic clock implementations.
 
-## Requirements
-
-- PHP 8.5;
-- Symfony UID 8.
-
 ## Installation
-
-Install the package with Composer:
 
 ```bash
 composer require youmad/endurance-foundation
