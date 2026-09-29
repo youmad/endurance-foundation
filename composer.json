@@ -1,0 +1,59 @@
+{
+  "name": "youmad/endurance-foundation",
+  "description": "Foundational value objects and clock abstractions for activity processing",
+  "type": "library",
+  "license": "MPL-2.0",
+  "require": {
+    "php": "^8.5",
+    "symfony/uid": "^8.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.95.25",
+    "phpstan/phpstan": "^2.2.13",
+    "phpunit/phpunit": "^12.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Youmad\\Endurance\\Foundation\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Youmad\\Endurance\\Foundation\\Tests\\": "tests/"
+    }
+  },
+  "archive": {
+    "exclude": [
+      "/vendor",
+      "/composer.lock",
+      "/phpunit.xml",
+      "/.phpunit.cache",
+      "/.phpunit.result.cache",
+      "/coverage",
+      "/.idea",
+      "/.vscode",
+      "/.php-cs-fixer.cache",
+      "/.phpstan.cache",
+      "/phpstan.neon",
+      "/.php-cs-fixer.php"
+    ]
+  },
+  "scripts": {
+    "test": "@php vendor/bin/phpunit --configuration phpunit.xml.dist",
+    "analyse": "@php vendor/bin/phpstan analyse --configuration=phpstan.dist.neon",
+    "cs:check": "@php vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --dry-run --diff",
+    "cs:fix": "@php vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+    "check": [
+      "@composer validate --strict",
+      "@test",
+      "@analyse",
+      "@cs:check"
+    ]
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  }
+}
