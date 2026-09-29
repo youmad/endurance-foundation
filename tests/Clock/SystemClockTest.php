@@ -6,18 +6,19 @@ namespace Youmad\Endurance\Foundation\Tests\Clock;
 
 use PHPUnit\Framework\TestCase;
 use Youmad\Endurance\Foundation\Clock\SystemClock;
-use Youmad\Endurance\Foundation\ValueObject\Instant;
 
 final class SystemClockTest extends TestCase
 {
-    public function testNowReturnsInstant(): void
+    public function testNowReturnsCurrentTime(): void
     {
         $clock = new SystemClock();
 
-        self::assertInstanceOf(
-            Instant::class,
-            $clock->now(),
-        );
+        $before = new \DateTimeImmutable();
+        $now = $clock->now()->toDateTimeImmutable();
+        $after = new \DateTimeImmutable();
+
+        self::assertTrue($now >= $before);
+        self::assertTrue($now <= $after);
     }
 
     public function testTimeMovesForward(): void

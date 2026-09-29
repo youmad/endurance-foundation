@@ -9,11 +9,14 @@ use Youmad\Endurance\Foundation\ValueObject\Uuid;
 
 final class UuidTest extends TestCase
 {
-    public function testCanGenerateUuid(): void
+    public function testGeneratesVersionSevenUuid(): void
     {
         $uuid = Uuid::generate();
 
-        self::assertInstanceOf(Uuid::class, $uuid);
+        self::assertMatchesRegularExpression(
+            '/\A[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\z/i',
+            $uuid->toString(),
+        );
     }
 
     public function testGeneratedUuidsAreDifferent(): void
